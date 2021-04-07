@@ -1,0 +1,144 @@
+package atv03;
+
+public class Cliente {
+
+	private String nome;
+	private int idade;
+
+	public Cliente() {
+
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public int getIdade() {
+		return idade;
+	}
+
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+
+	public Cliente(String nome, int idade) {
+		super();
+		this.nome = nome;
+		this.idade = idade;
+
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [nome=" + nome + ", idade=" + idade + "]";
+	}
+
+}
+
+
+package atv03;
+
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
+public class ClienteTeste {
+
+	public static void main(String[] args) {
+		ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+		int opcaoMenu, idade;
+		String nome;
+
+		do {
+
+			opcaoMenu = Integer.parseInt(JOptionPane.showInputDialog(null,
+					"1- Cadastrar Cliente\n2-Apagar Cliente\n3- Modificar Cliente\n4- Listar Clientes\n5- Sair",
+					"Bem vindo ao sistema de cadastro de Clientes", 3));
+
+			switch (opcaoMenu) {
+
+			case 1:
+				nome = JOptionPane.showInputDialog(null, "Informe o nome do cliente");
+				idade = Integer.parseInt(JOptionPane.showInputDialog(null, "Informe a idade do cliente"));
+				Cliente cliente = new Cliente(nome, idade);
+				listaClientes.add(cliente);
+				break;
+
+			case 2:
+				nome = JOptionPane.showInputDialog(null, "Informe o nome do cliente que deseja deletar");
+				for (int i = 0; i < listaClientes.size(); i++) {
+					if (listaClientes.get(i).getNome().equals(nome)) {
+						listaClientes.remove(i);
+						JOptionPane.showMessageDialog(null, "Cliente " + nome + " foi removido");
+					} else if (i + 1 > listaClientes.size()) {
+						JOptionPane.showMessageDialog(null, "Cliente " + nome + " nï¿½o existe");
+
+					}
+				}
+				break;
+
+			case 3:
+				int opcaoMenuInterno;
+				String novoNome;
+				int novaIdade;
+				nome = JOptionPane.showInputDialog(null, "Informe o nome do cliente que deseja alterar");
+
+				for (int i = 0; i < listaClientes.size(); i++) {
+					if (listaClientes.get(i).getNome().equals(nome)) {
+						do {
+							opcaoMenuInterno = Integer.parseInt(JOptionPane.showInputDialog(null,
+									"1- Alterar nome\n2- Alterar idade\n3- Alterar nome e idade",
+									"Informe a opï¿½ï¿½o desejada", 3));
+							switch (opcaoMenuInterno) {
+							case 1:
+								novoNome = JOptionPane.showInputDialog(null, "Informe o novo nome do cliente");
+								listaClientes.get(i).setNome(novoNome);
+								break;
+							case 2:
+								novaIdade = Integer.parseInt(
+										JOptionPane.showInputDialog(null, "Informe a nova idade do cliente "));
+								listaClientes.get(i).setIdade(novaIdade);
+								break;
+							case 3:
+								novoNome = JOptionPane.showInputDialog(null, "Informe o novo nome do cliente");
+								listaClientes.get(i).setNome(novoNome);
+								novaIdade = Integer.parseInt(
+										JOptionPane.showInputDialog(null, "Informe a nova idade do cliente "));
+								listaClientes.get(i).setIdade(novaIdade);
+								break;
+							default:
+								JOptionPane.showMessageDialog(null, "Insira uma opï¿½ï¿½o valida");
+							}
+						} while (opcaoMenuInterno != 1 && opcaoMenuInterno != 2 && opcaoMenuInterno != 3);
+						JOptionPane.showMessageDialog(null, "Os dados do cliente foram atualizados");
+					} else if (i + 1 > listaClientes.size()) {
+						JOptionPane.showMessageDialog(null, "Cliente " + nome + " nï¿½o existe");
+
+					}
+				}
+				break;
+
+			case 4:
+				String lista = "";
+				for (int i = 0; i < listaClientes.size(); i++) {
+					lista += i + 1 + "- " + listaClientes.get(i).getNome() + ", " + listaClientes.get(i).getIdade()
+							+ " anos\n";
+				}
+				JOptionPane.showMessageDialog(null, lista, "Lista dos clientes cadastrados", 1);
+				break;
+
+			case 5:
+				break;
+
+			default:
+				JOptionPane.showMessageDialog(null, "Insira uma opï¿½ï¿½o valida");
+			}
+
+		} while (opcaoMenu != 5);
+
+	}
+}
