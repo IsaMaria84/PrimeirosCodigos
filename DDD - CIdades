@@ -1,0 +1,54 @@
+package aplication;
+
+import java.util.Scanner;
+
+public class Program {
+
+	public static void main(String[] args) {
+
+		Scanner teclado = new Scanner(System.in);
+
+		int DDD;
+
+		System.out.println();
+
+		DDD = teclado.nextInt();
+
+		switch (DDD) {
+
+		case 61:
+
+			System.out.println("Brasília");
+			break;
+
+		case 71:
+
+			System.out.println("Salvador");
+			break;
+
+		case 11:
+
+			System.out.println("São Paulo");
+			break;
+
+		case 21:
+
+			System.out.println("Rio De Janeiro");
+			break;
+
+		case 31:
+
+			System.out.println("Belo Horizonte");
+			break;
+
+		case 13:
+
+			System.out.println("DDD nao cadastrado");
+
+		}// switch
+
+		teclado.close();
+
+	}
+
+}
