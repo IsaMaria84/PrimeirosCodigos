@@ -1,0 +1,208 @@
+package projetoescola;
+
+import javax.swing.JOptionPane;
+
+public class ProjetoEscola {
+
+	public static void main(String[] args) {
+		int op = 0;
+		do {
+			op = Integer.parseInt(JOptionPane.showInputDialog("Digite o numero da operação:"
+					+ "\n1 - Cadastrar Aluno\n2 - Cadastrar Professor\n3 - Cadastrar o Curso\n0 - Sair  "));
+			switch (op) {
+			case 1:
+				String nome = JOptionPane.showInputDialog("Digite o nome do aluno: ");
+				String sobreNome = JOptionPane.showInputDialog("Digite o sobre nome: ");
+				String ultimoNome = JOptionPane.showInputDialog("Digite o último nome: ");
+				String rg = JOptionPane.showInputDialog("Digite seu rg: ");
+				String sr = JOptionPane.showInputDialog("Para Sair Digite 0: ");
+				
+				break;
+			case 0:
+				JOptionPane.showMessageDialog(null, "Saindo do Sistema");
+			}
+		} while (op != 0);
+	}
+
+}
+
+
+package projetoescola;
+
+
+
+public class Pessoa {
+
+  
+  private String nome;
+  private String sobreNome;
+  private String ultimoNome;
+  private String rg;
+
+  
+  public Pessoa(String nome, String sobreNome, String ultimoNome, String rg) {
+  this.nome = nome;
+  this.sobreNome = sobreNome;
+  this.ultimoNome = ultimoNome;
+  this.rg = rg;
+  }
+
+  public Pessoa() {
+  }
+
+
+  public String getNome() {
+  return nome;
+  }
+
+  public void setNome(String nome) {
+  this.nome = nome;
+  }
+
+  public String getSobreNome() {
+  return sobreNome;
+  }
+
+  public void setSobreNome(String sobreNome) {
+  this.sobreNome = sobreNome;
+  }
+
+  public String getUltimoNome() {
+  return ultimoNome;
+  }
+
+  public void setUltimoNome(String ultimoNome) {
+  this.ultimoNome = ultimoNome;
+  }
+
+  public String getRg() {
+  return rg;
+  }
+
+  public void setRg(String rg) {
+  this.rg = rg;
+  }
+
+  @Override
+  public String toString (){
+  return "Nome Completo: " + this.getNome()+ " " + this.getSobreNome() +
+  " " + this.getUltimoNome()+  ".\nRegistro Geral: " + this.getRg();
+  }
+
+} 
+
+
+package projetoescola;
+
+public class Aluno extends Pessoa {
+
+	private String matricula;
+	private String tipoAluno;
+	private String classe;
+	private String nomeEscola;
+
+	public Aluno(String matricula, String tipoAluno, String classe, String nomeEscola, String nome, String sobreNome,
+			String ultimoNome, String rg) {
+		
+		this.matricula = matricula;
+		this.tipoAluno = tipoAluno;
+		this.classe = classe;
+		if (!this.nomeEscola.equals(""))
+			this.nomeEscola = nomeEscola;
+	}
+
+	public Aluno() {
+	}
+
+	
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
+	public String getTipoAluno() {
+		return tipoAluno;
+	}
+
+	public void setTipoAluno(String tipoAluno) {
+		this.tipoAluno = tipoAluno;
+	}
+
+	public String getClasse() {
+		return classe;
+	}
+
+	public void setClasse(String classe) {
+		this.classe = classe;
+	}
+
+	public String getNomeEscola() {
+		return nomeEscola;
+	}
+
+	public void setNomeEscola(String nomeEscola) {
+		this.nomeEscola = nomeEscola;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "\nNumero de Matricula: " + this.getMatricula() + "\nTipo de Aluno: "
+				+ this.getTipoAluno() + "\nClasse: " + this.getClasse();
+	}
+
+} 
+
+package projetoescola;
+
+public class Professor extends Pessoa {
+
+	
+	private String especialidade;
+	private String nomeEscola;
+	private double salario;
+
+	
+	public Professor(String especialidade, String nomeEscola, double salario) {
+		this.especialidade = especialidade;
+		if (!this.nomeEscola.equals(""))
+			this.nomeEscola = nomeEscola;
+		this.salario = salario;
+	}
+
+	public Professor() {
+	}
+
+	public String getEspecialidade() {
+		return especialidade;
+	}
+
+	public void setEspecialidade(String especialidade) {
+		this.especialidade = especialidade;
+	}
+
+	public String getNomeEscola() {
+		return nomeEscola;
+	}
+
+	public void setNomeEscola(String nomeEscola) {
+		this.nomeEscola = nomeEscola;
+	}
+
+	public double getSalario() {
+		return salario;
+	}
+
+	public void setSalario(double salario) {
+		this.salario = salario;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "\nMateria lecionada: " + this.getEspecialidade() + "\nNome da Escola: "
+				+ this.getNomeEscola() + "\nSalario: " + this.getSalario();
+	}
+
+}
