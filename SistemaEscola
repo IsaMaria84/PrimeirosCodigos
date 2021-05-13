@@ -1,4 +1,4 @@
-package projetoescola;
+package projetoescola;package projetoescola;
 
 import javax.swing.JOptionPane;
 
@@ -13,6 +13,30 @@ public class ProjetoEscola {
 			case 1:
 				String nome = JOptionPane.showInputDialog("Digite o nome do aluno: ");
 				String sobreNome = JOptionPane.showInputDialog("Digite o sobre nome: ");
+				String ultimoNome = JOptionPane.showInputDialog("Digite o último nome: ");
+				String rg = JOptionPane.showInputDialog("Digite seu rg: ");
+				String sr = JOptionPane.showInputDialog("Para Sair Digite 0: ");
+				
+				break;
+				
+			case 2: 
+				
+				String especialidade = JOptionPane.showInputDialog("Digite o curso que o professor(a) leciona: ");
+				String nomeEscola = JOptionPane.showInputDialog("Digite a escola do professor(a): ");
+				String salario = JOptionPane.showInputDialog("Digite o salário do professor(a): ");
+				
+				break;
+				
+			case 0:
+				JOptionPane.showMessageDialog(null, "Saindo do Sistema");
+				 
+				
+			}
+		} while (op != 0);
+	}
+
+}
+
 				String ultimoNome = JOptionPane.showInputDialog("Digite o último nome: ");
 				String rg = JOptionPane.showInputDialog("Digite seu rg: ");
 				String sr = JOptionPane.showInputDialog("Para Sair Digite 0: ");
